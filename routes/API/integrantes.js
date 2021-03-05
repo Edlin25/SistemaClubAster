@@ -33,15 +33,23 @@ router.get('/detalleIntegrantes', (req, res) => {
 });
 
 //RECIBIR DATOS
-router.post('/', (req, res) => {
+router.post('/insertarIntegrantes', (req, res) => {
     const datosPersonas = req.body;
-    const mensaje2 = req.body.otroMensaje;
-    res.status(201).json({
-        ok: true,
-        mensaje: "La información llegó correctamente",
-        datosPersonas,
-        mensajeAlterno: mensaje2
+
+    pool.getConnection((err, connection) => {
+        if (err) throw err;
+        connection.query('INSERT INTO integrantes SET ?', datosPersonas, (error, resultadoInsercion, fields) => {
+            if (err) throw err;
+            res.status(200).json({
+                ok: true,
+                resultadoInsercion
+            });
+
+
+        });
+
     });
+
 });
 
 
