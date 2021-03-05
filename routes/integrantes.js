@@ -9,6 +9,7 @@ router.get('/', (req, res) => {
 });
 
 router.get('/detalleIntegrantes', (req, res) => {
+
     pool.getConnection((err, connection) => {
         if (err) throw err;
         connection.query('SELECT * FROM integrantes', (error, result, fields) => {
