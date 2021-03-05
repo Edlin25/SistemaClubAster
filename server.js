@@ -17,10 +17,10 @@ server.use(express.urlencoded({ extended: true }));
 server.use(morgan('dev'));
 server.use(express.static('public'));
 
-server.use('/inicio', require('./routes/API/inicio'));
-server.use('/integrantes', require('./routes/API/integrantes'));
-server.use('/movimientos', require('./routes/API/movimientos'));
-server.use('/reuniones', require('./routes/API/reuniones'));
+// server.use('/inicio', require('./routes/inicio'));
+server.use('/api/integrantes', require('./routes/integrantes'));
+server.use('/api/movimientos', require('./routes/movimientos'));
+server.use('/api/reuniones', require('./routes/reuniones'));
 
 
 
