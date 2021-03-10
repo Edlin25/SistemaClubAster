@@ -4,15 +4,15 @@ const router = express.Router();
 const pool = require('../database/database');
 
 //RUTA DE LA PAGINA DE INTEGRANTES
-router.get('/', (req, res) => {
-    res.send("Aquí irá la lista de personas de forma general")
-});
+// router.get('/', (req, res) => {
+//     res.send("Aquí irá la lista de personas de forma general")
+// });
 
-router.get('/detalleIntegrantes', (req, res) => {
+router.get('/', (req, res) => {
 
     pool.getConnection((err, connection) => {
         if (err) throw err;
-        connection.query('SELECT * FROM integrantes', (error, result, fields) => {
+        connection.query('SELECT * FROM integrantes', (error, integrantes, fields) => {
             if (err) {
                 res.status(400).json({
                     ok: false,
@@ -21,7 +21,7 @@ router.get('/detalleIntegrantes', (req, res) => {
             }
             res.status(200).json({
                 ok: true,
-                datosbd: result
+                integrantes
             });
 
 
