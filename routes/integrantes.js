@@ -4,9 +4,6 @@ const router = express.Router();
 const pool = require('../database/database');
 
 //RUTA DE LA PAGINA DE INTEGRANTES
-// router.get('/', (req, res) => {
-//     res.send("Aquí irá la lista de personas de forma general")
-// });
 
 router.get('/', (req, res) => {
 
